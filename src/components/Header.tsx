@@ -7,38 +7,16 @@ interface HeaderProps {
 
 export default function Header({ onLogin, onStart }: HeaderProps) {
   return (
-    <header
-      style={{
-        width: "100%",
-        maxWidth: "1280px",
-        margin: "0 auto",
-        padding: "28px 32px 12px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        position: "relative",
-        zIndex: 30,
-        boxSizing: "border-box",
-      }}
-    >
+    <header className="absolute top-0 left-0 right-0 z-50 mx-auto flex w-full max-w-7xl items-center justify-between px-8 pt-7 pb-3">
       {/* ЛОГОТИП NextQ */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "10px",
-          cursor: "pointer",
-          userSelect: "none",
-        }}
-      >
+      <div className="flex cursor-pointer items-center gap-2.5 select-none">
         <svg
-          width="28"
-          height="28"
+          className="h-7 w-7"
           viewBox="0 0 28 28"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Зовнішнє бірюзове коло */}
+          {/* Внешний бирюзовый круг */}
           <circle
             cx="14"
             cy="14"
@@ -46,7 +24,7 @@ export default function Header({ onLogin, onStart }: HeaderProps) {
             stroke="#00F2C3"
             strokeWidth="2.4"
           />
-          {/* Внутрішнє кільце / точка */}
+          {/* Внутреннее кольцо / точка */}
           <circle
             cx="14"
             cy="14"
@@ -62,79 +40,32 @@ export default function Header({ onLogin, onStart }: HeaderProps) {
           />
         </svg>
 
-        <span
-          style={{
-            fontSize: "22px",
-            fontWeight: 700,
-            letterSpacing: "-0.03em",
-            color: "#ffffff",
-          }}
-        >
-          Next<span style={{ fontWeight: 400, color: "#e2e8f0" }}>Q</span>
+        <span className="text-[22px] font-bold tracking-[-0.03em] text-white">
+          Next<span className="font-normal text-slate-200">Q</span>
         </span>
       </div>
 
-      {/* КНОПКИ АВТОРИЗАЦІЇ */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "12px",
-        }}
-      >
+      {/* КНОПКИ АВТОРИЗАЦИИ */}
+      {/* Спільна темна капсула, яка обгортає обидві кнопки */}
+      <div className="flex items-center rounded-full border border-white/5 bg-white/[0.03] p-1 backdrop-blur-md">
+        
         {/* Login */}
         <button
           onClick={onLogin}
-          style={{
-            padding: "9px 22px",
-            borderRadius: "9999px",
-            background: "rgba(255, 255, 255, 0.05)",
-            border: "1px solid rgba(255, 255, 255, 0.08)",
-            color: "#e2e8f0",
-            fontSize: "14px",
-            fontWeight: 500,
-            cursor: "pointer",
-            transition: "all 0.2s ease",
-            backdropFilter: "blur(12px)",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = "rgba(255, 255, 255, 0.1)";
-            e.currentTarget.style.color = "#ffffff";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = "rgba(255, 255, 255, 0.05)";
-            e.currentTarget.style.color = "#e2e8f0";
-          }}
+          className="cursor-pointer px-5 py-2 text-[14px] font-medium text-white/70 transition-colors hover:text-white"
         >
           Login
         </button>
 
         {/* Start now */}
+        {/* Замінили яскравий #00F2C3 на більш спокійний матовий #40D5B5 (м'ятний), як на макеті */}
         <button
           onClick={onStart}
-          style={{
-            padding: "9px 24px",
-            borderRadius: "9999px",
-            backgroundColor: "#00F2C3",
-            color: "#030807",
-            fontSize: "14px",
-            fontWeight: 700,
-            border: "none",
-            cursor: "pointer",
-            boxShadow: "0 0 20px rgba(0, 242, 195, 0.25)",
-            transition: "all 0.2s ease",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = "scale(1.03)";
-            e.currentTarget.style.backgroundColor = "#00dcb1";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = "scale(1)";
-            e.currentTarget.style.backgroundColor = "#00F2C3";
-          }}
+          className="cursor-pointer rounded-full bg-[#40D5B5] px-6 py-2 text-[14px] font-medium text-[#040908] transition-all hover:bg-[#38C2A4] active:scale-95"
         >
           Start now
         </button>
+        
       </div>
     </header>
   );
