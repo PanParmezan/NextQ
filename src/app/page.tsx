@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Header from "../components/Header";
+
 import Hero from "../components/Hero";
 import AuthModal from "../components/AuthModal";
+import Header from "../components/Header";
 
 export default function Home() {
   const [isAuthOpen, setIsAuthOpen] = useState(false);
@@ -20,7 +21,7 @@ export default function Home() {
   };
 
   return (
-    <main style={{ minHeight: "100vh", position: "relative" }}>
+    <main className="relative min-h-screen">
       <Header onLogin={handleOpenLogin} onStart={handleOpenRegister} />
       <Hero onStartTrial={handleOpenRegister} />
 

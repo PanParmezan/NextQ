@@ -33,101 +33,36 @@ export default function AuthModal({
   return (
     <div
       onClick={onClose}
-      style={{
-        position: "fixed",
-        inset: 0,
-        backgroundColor: "rgba(0, 0, 0, 0.75)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        zIndex: 100,
-        padding: "20px",
-      }}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-5 backdrop-blur-md"
     >
       {/* Контейнер модалки */}
       <div
         onClick={(e) => e.stopPropagation()}
-        style={{
-          width: "100%",
-          maxWidth: "440px",
-          backgroundColor: "#080f0e",
-          border: "1px solid rgba(255, 255, 255, 0.1)",
-          borderRadius: "28px",
-          padding: "36px",
-          position: "relative",
-          boxShadow: "0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 242, 195, 0.08)",
-        }}
+        className="relative w-full max-w-[440px] rounded-[28px] border border-white/10 bg-[#080f0e] p-9 shadow-[0_25px_60px_rgba(0,0,0,0.8),0_0_40px_rgba(0,242,195,0.08)]"
       >
         {/* Кнопка закриття (хрестик) */}
         <button
           onClick={onClose}
-          style={{
-            position: "absolute",
-            top: "22px",
-            right: "22px",
-            width: "36px",
-            height: "36px",
-            borderRadius: "50%",
-            backgroundColor: "rgba(255, 255, 255, 0.05)",
-            border: "none",
-            color: "#94a3b8",
-            fontSize: "18px",
-            cursor: "pointer",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            transition: "all 0.2s",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.color = "#ffffff";
-            e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.color = "#94a3b8";
-            e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.05)";
-          }}
+          className="absolute top-[22px] right-[22px] flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-white/5 text-lg text-slate-400 transition-colors duration-200 hover:bg-white/10 hover:text-white"
         >
           ✕
         </button>
 
         {/* Заголовок */}
-        <h2
-          style={{
-            fontSize: "26px",
-            fontWeight: 700,
-            letterSpacing: "-0.02em",
-            color: "#ffffff",
-            marginBottom: "8px",
-          }}
-        >
+        <h2 className="mb-2 text-[26px] font-bold tracking-[-0.02em] text-white">
           {mode === "login" ? "Welcome Back" : "Create Account"}
         </h2>
-        <p
-          style={{
-            fontSize: "14px",
-            color: "#94a3b8",
-            marginBottom: "28px",
-          }}
-        >
+        <p className="mb-7 text-sm text-slate-400">
           {mode === "login"
             ? "Enter your credentials to access your dashboard"
             : "Sign up to start your journey with NextQ"}
         </p>
 
         {/* Форма */}
-        <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           {mode === "register" && (
             <div>
-              <label
-                style={{
-                  display: "block",
-                  fontSize: "13px",
-                  color: "#cbd5e1",
-                  marginBottom: "6px",
-                }}
-              >
+              <label className="mb-1.5 block text-[13px] text-slate-300">
                 Full Name
               </label>
               <input
@@ -136,30 +71,13 @@ export default function AuthModal({
                 placeholder="Alex Morgan"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                style={{
-                  width: "100%",
-                  boxSizing: "border-box",
-                  padding: "13px 16px",
-                  borderRadius: "14px",
-                  backgroundColor: "rgba(255, 255, 255, 0.04)",
-                  border: "1px solid rgba(255, 255, 255, 0.08)",
-                  color: "#ffffff",
-                  fontSize: "14px",
-                  outline: "none",
-                }}
+                className="w-full rounded-[14px] border border-white/[0.08] bg-white/[0.04] px-4 py-[13px] text-sm text-white outline-none transition-colors duration-200 placeholder:text-slate-500 focus:border-[#00F2C3]/60 focus:bg-white/[0.07]"
               />
             </div>
           )}
 
           <div>
-            <label
-              style={{
-                display: "block",
-                fontSize: "13px",
-                color: "#cbd5e1",
-                marginBottom: "6px",
-              }}
-            >
+            <label className="mb-1.5 block text-[13px] text-slate-300">
               Email Address
             </label>
             <input
@@ -168,29 +86,12 @@ export default function AuthModal({
               placeholder="alex@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              style={{
-                width: "100%",
-                boxSizing: "border-box",
-                padding: "13px 16px",
-                borderRadius: "14px",
-                backgroundColor: "rgba(255, 255, 255, 0.04)",
-                border: "1px solid rgba(255, 255, 255, 0.08)",
-                color: "#ffffff",
-                fontSize: "14px",
-                outline: "none",
-              }}
+              className="w-full rounded-[14px] border border-white/[0.08] bg-white/[0.04] px-4 py-[13px] text-sm text-white outline-none transition-colors duration-200 placeholder:text-slate-500 focus:border-[#00F2C3]/60 focus:bg-white/[0.07]"
             />
           </div>
 
           <div>
-            <label
-              style={{
-                display: "block",
-                fontSize: "13px",
-                color: "#cbd5e1",
-                marginBottom: "6px",
-              }}
-            >
+            <label className="mb-1.5 block text-[13px] text-slate-300">
               Password
             </label>
             <input
@@ -199,66 +100,28 @@ export default function AuthModal({
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              style={{
-                width: "100%",
-                boxSizing: "border-box",
-                padding: "13px 16px",
-                borderRadius: "14px",
-                backgroundColor: "rgba(255, 255, 255, 0.04)",
-                border: "1px solid rgba(255, 255, 255, 0.08)",
-                color: "#ffffff",
-                fontSize: "14px",
-                outline: "none",
-              }}
+              className="w-full rounded-[14px] border border-white/[0.08] bg-white/[0.04] px-4 py-[13px] text-sm text-white outline-none transition-colors duration-200 placeholder:text-slate-500 focus:border-[#00F2C3]/60 focus:bg-white/[0.07]"
             />
           </div>
 
           {/* Кнопка підтвердження */}
           <button
             type="submit"
-            style={{
-              marginTop: "8px",
-              padding: "14px",
-              borderRadius: "9999px",
-              backgroundColor: "#00F2C3",
-              color: "#030807",
-              fontSize: "15px",
-              fontWeight: 700,
-              border: "none",
-              cursor: "pointer",
-              boxShadow: "0 0 24px rgba(0, 242, 195, 0.25)",
-              transition: "transform 0.15s ease",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.02)")}
-            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            className="mt-2 cursor-pointer rounded-full bg-[#00F2C3] p-3.5 text-[15px] font-bold text-[#030807] shadow-[0_0_24px_rgba(0,242,195,0.25)] transition-all duration-150 hover:scale-[1.02] hover:bg-[#00dcb1] hover:shadow-[0_0_30px_rgba(0,242,195,0.4)] active:scale-95"
           >
             {mode === "login" ? "Sign In" : "Create Account"}
           </button>
         </form>
 
         {/* Перемикання режимів Login / Register */}
-        <div
-          style={{
-            marginTop: "24px",
-            textAlign: "center",
-            fontSize: "13px",
-            color: "#94a3b8",
-          }}
-        >
+        <div className="mt-6 text-center text-[13px] text-slate-400">
           {mode === "login" ? (
             <>
               Don&apos;t have an account?{" "}
               <button
                 type="button"
                 onClick={() => setMode("register")}
-                style={{
-                  background: "none",
-                  border: "none",
-                  color: "#00F2C3",
-                  fontWeight: 600,
-                  cursor: "pointer",
-                  padding: 0,
-                }}
+                className="cursor-pointer font-semibold text-[#00F2C3] hover:underline"
               >
                 Sign up
               </button>
@@ -269,14 +132,7 @@ export default function AuthModal({
               <button
                 type="button"
                 onClick={() => setMode("login")}
-                style={{
-                  background: "none",
-                  border: "none",
-                  color: "#00F2C3",
-                  fontWeight: 600,
-                  cursor: "pointer",
-                  padding: 0,
-                }}
+                className="cursor-pointer font-semibold text-[#00F2C3] hover:underline"
               >
                 Sign in
               </button>
