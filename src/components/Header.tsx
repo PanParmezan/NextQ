@@ -7,7 +7,7 @@ interface HeaderProps {
 
 export default function Header({ onLogin, onStart }: HeaderProps) {
   return (
-    <header className="relative z-30 mx-auto flex w-full max-w-7xl items-center justify-between px-8 pt-7 pb-3">
+    <header className="absolute top-0 left-0 right-0 z-50 mx-auto flex w-full max-w-7xl items-center justify-between px-8 pt-7 pb-3">
       {/* ЛОГОТИП NextQ */}
       <div className="flex cursor-pointer items-center gap-2.5 select-none">
         <svg
@@ -46,22 +46,26 @@ export default function Header({ onLogin, onStart }: HeaderProps) {
       </div>
 
       {/* КНОПКИ АВТОРИЗАЦИИ */}
-      <div className="flex items-center gap-3">
+      {/* Спільна темна капсула, яка обгортає обидві кнопки */}
+      <div className="flex items-center rounded-full border border-white/5 bg-white/[0.03] p-1 backdrop-blur-md">
+        
         {/* Login */}
         <button
           onClick={onLogin}
-          className="cursor-pointer rounded-full border border-white/[0.08] bg-white/[0.05] px-[22px] py-[9px] text-sm font-medium text-slate-200 backdrop-blur-md transition-all duration-200 hover:bg-white/10 hover:text-white active:scale-95"
+          className="cursor-pointer px-5 py-2 text-[14px] font-medium text-white/70 transition-colors hover:text-white"
         >
           Login
         </button>
 
         {/* Start now */}
+        {/* Замінили яскравий #00F2C3 на більш спокійний матовий #40D5B5 (м'ятний), як на макеті */}
         <button
           onClick={onStart}
-          className="cursor-pointer rounded-full bg-[#00F2C3] px-6 py-[9px] text-sm font-bold text-[#030807] shadow-[0_0_20px_rgba(0,242,195,0.25)] transition-all duration-200 hover:scale-[1.03] hover:bg-[#00dcb1] hover:shadow-[0_0_25px_rgba(0,242,195,0.4)] active:scale-95"
+          className="cursor-pointer rounded-full bg-[#40D5B5] px-6 py-2 text-[14px] font-medium text-[#040908] transition-all hover:bg-[#38C2A4] active:scale-95"
         >
           Start now
         </button>
+        
       </div>
     </header>
   );
